@@ -1,11 +1,2568 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AeronX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AeronX | Intelligent Biological Carbon Management</title>
+
+    <meta name="description"
+          content="AeronX is an intelligent, modular biological carbon management system combining exhaust pre-treatment, gas conditioning, microalgae-based CO₂ capture and real-time monitoring.">
+
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", sans-serif;
+            background: #050807;
+            color: #edf7f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .green {
+            color: #61e294;
+        }
+
+        .muted {
+            color: #8c9b92;
+        }
+
+
+        /* =========================
+           NAVBAR
+           ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(5, 8, 7, 0.72);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-inner {
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 10px;
+
+            display: grid;
+            place-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #63e69a,
+                #187c4a
+            );
+
+            box-shadow: 0 0 30px rgba(67, 220, 132, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+
+            color: #aab8b0;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #70e69c;
+        }
+
+        .nav-button {
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(100,230,150,0.3);
+
+            background: rgba(80,220,135,0.08);
+
+            color: #75e8a0;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        @media(max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+        }
+
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            padding-top: 80px;
+
+            background:
+                radial-gradient(
+                    circle at 70% 40%,
+                    rgba(47, 190, 105, 0.13),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(24, 100, 60, 0.12),
+                    transparent 30%
+                );
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 12px;
+
+            border: 1px solid rgba(100,230,150,0.18);
+
+            background: rgba(100,230,150,0.05);
+
+            border-radius: 999px;
+
+            color: #6de69a;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 25px;
+        }
+
+        .pulse {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #63e294;
+
+            box-shadow: 0 0 12px #63e294;
+
+            animation: pulse 1.7s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .45;
+                transform: scale(.7);
+            }
+
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 7vw, 92px);
+
+            line-height: .95;
+
+            letter-spacing: -5px;
+
+            margin-bottom: 27px;
+        }
+
+        .hero h1 span {
+            display: block;
+
+            background: linear-gradient(
+                100deg,
+                #f1fff6,
+                #65e99b
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 620px;
+
+            color: #9baaa2;
+
+            font-size: 18px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 20px;
+
+            border-radius: 11px;
+
+            font-weight: 750;
+
+            font-size: 14px;
+
+            transition: .25s;
+
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #62e294;
+            color: #061009;
+
+            box-shadow: 0 10px 35px rgba(70,220,130,.16);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 40px rgba(70,220,130,.28);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,.1);
+
+            color: #d7e2dc;
+
+            background: rgba(255,255,255,.03);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.07);
+        }
+
+
+        /* =========================
+           HERO VISUAL
+           ========================= */
+
+        .system-card {
+
+            position: relative;
+
+            padding: 28px;
+
+            border-radius: 25px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,31,24,.92),
+                    rgba(7,13,10,.94)
+                );
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.4),
+                inset 0 1px rgba(255,255,255,.04);
+        }
+
+        .system-title {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+
+            color: #8fa198;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .live {
+            color: #6ce59a;
+        }
+
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .stage {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            border: 1px solid rgba(255,255,255,.06);
+
+            background: rgba(255,255,255,.025);
+
+            transition: .3s;
+        }
+
+        .stage:hover {
+
+            border-color: rgba(100,230,150,.3);
+
+            transform: translateX(5px);
+        }
+
+        .stage-number {
+
+            width: 31px;
+            height: 31px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 9px;
+
+            background: rgba(99,226,148,.1);
+
+            color: #66e497;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .stage h4 {
+            font-size: 14px;
+        }
+
+        .stage p {
+            font-size: 11px;
+            color: #728079;
+        }
+
+        .arrow {
+            text-align: center;
+
+            color: #3e7b59;
+
+            font-size: 17px;
+        }
+
+        .gas-dot {
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #65e499;
+
+            box-shadow: 0 0 20px #65e499;
+
+            animation: gasMove 5s linear infinite;
+        }
+
+        @keyframes gasMove {
+
+            0% {
+                top: 17%;
+                left: 9%;
+            }
+
+            25% {
+                top: 37%;
+                left: 90%;
+            }
+
+            50% {
+                top: 56%;
+                left: 10%;
+            }
+
+            75% {
+                top: 76%;
+                left: 90%;
+            }
+
+            100% {
+                top: 93%;
+                left: 50%;
+            }
+
+        }
+
+
+        /* =========================
+           STATS
+           ========================= */
+
+        .stats {
+            border-top: 1px solid rgba(255,255,255,.06);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+
+            padding: 28px 0;
+        }
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat strong {
+
+            display: block;
+
+            font-size: 25px;
+
+            color: #e8f5ed;
+        }
+
+        .stat span {
+
+            color: #718078;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        @media(max-width:700px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+
+        /* =========================
+           SECTIONS
+           ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-label {
+
+            color: #63df93;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+
+            font-size: clamp(32px,5vw,54px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+
+            color: #87958e;
+
+            max-width: 680px;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           INNOVATION
+           ========================= */
+
+        .innovation-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 18px;
+
+            margin-top: 55px;
+        }
+
+        .feature-card {
+
+            padding: 27px;
+
+            border-radius: 18px;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            background: rgba(255,255,255,.025);
+
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+
+            transform: translateY(-6px);
+
+            border-color: rgba(100,230,150,.25);
+        }
+
+        .feature-icon {
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+
+            color: #829088;
+
+            font-size: 14px;
+        }
+
+        @media(max-width:850px) {
+
+            .innovation-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           HOW IT WORKS
+           ========================= */
+
+        .process {
+
+            margin-top: 55px;
+
+            display: grid;
+
+            grid-template-columns: repeat(5,1fr);
+
+            gap: 12px;
+        }
+
+        .process-step {
+
+            position: relative;
+
+            padding: 22px 16px;
+
+            border-radius: 16px;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            background: rgba(255,255,255,.025);
+
+            text-align: center;
+        }
+
+        .process-step .icon {
+
+            font-size: 28px;
+
+            margin-bottom: 13px;
+        }
+
+        .process-step h3 {
+
+            font-size: 14px;
+
+            margin-bottom: 6px;
+        }
+
+        .process-step p {
+
+            font-size: 11px;
+
+            color: #75837b;
+        }
+
+        @media(max-width:850px) {
+
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           DASHBOARD
+           ========================= */
+
+        .dashboard-section {
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(50,200,110,.08),
+                    transparent 40%
+                );
+        }
+
+        .dashboard {
+
+            margin-top: 50px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background: #090f0b;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            box-shadow: 0 30px 90px rgba(0,0,0,.35);
+        }
+
+        .dash-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid rgba(255,255,255,.06);
+
+            margin-bottom: 20px;
+        }
+
+        .dash-brand {
+
+            font-weight: 800;
+        }
+
+        .status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #6de49a;
+
+            font-size: 12px;
+        }
+
+        .status-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #6de49a;
+
+            box-shadow: 0 0 10px #6de49a;
+        }
+
+        .sensor-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4,1fr);
+
+            gap: 12px;
+        }
+
+        .sensor {
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,.025);
+
+            border: 1px solid rgba(255,255,255,.06);
+        }
+
+        .sensor-name {
+
+            color: #77867e;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .sensor-value {
+
+            font-size: 29px;
+
+            font-weight: 800;
+
+            margin-top: 8px;
+        }
+
+        .sensor-unit {
+
+            color: #718078;
+
+            font-size: 11px;
+        }
+
+        .chart {
+
+            margin-top: 15px;
+
+            height: 180px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 35px 35px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .chart-line {
+
+            position: absolute;
+
+            left: 0;
+            bottom: 35px;
+
+            width: 100%;
+            height: 100px;
+        }
+
+        .chart-line svg {
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart-label {
+
+            position: absolute;
+
+            bottom: 10px;
+            left: 15px;
+
+            font-size: 10px;
+
+            color: #637169;
+        }
+
+        @media(max-width:800px) {
+
+            .sensor-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+
+        /* =========================
+           SCIENCE
+           ========================= */
+
+        .science-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+            margin-top: 50px;
+        }
+
+        .science-card {
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            background: rgba(255,255,255,.025);
+        }
+
+        .science-card h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 19px;
+        }
+
+        .science-card p {
+
+            color: #829088;
+
+            font-size: 14px;
+        }
+
+        .equation {
+
+            margin-top: 20px;
+
+            padding: 17px;
+
+            border-radius: 12px;
+
+            background: rgba(100,230,150,.05);
+
+            border: 1px solid rgba(100,230,150,.1);
+
+            text-align: center;
+
+            font-family: Georgia, serif;
+
+            color: #8ceaad;
+
+            font-size: 17px;
+        }
+
+        @media(max-width:800px) {
+
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           CALCULATOR
+           ========================= */
+
+        .calculator {
+
+            margin-top: 50px;
+
+            max-width: 700px;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(25,45,33,.7),
+                    rgba(10,17,13,.8)
+                );
+
+            border: 1px solid rgba(100,230,150,.12);
+        }
+
+        .input-group {
+
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+
+            display: block;
+
+            color: #89978f;
+
+            font-size: 12px;
+
+            margin-bottom: 7px;
+        }
+
+        .input-group input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(255,255,255,.09);
+
+            background: #070b09;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+
+            border-color: rgba(100,230,150,.5);
+        }
+
+        .result {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 13px;
+
+            background: rgba(100,230,150,.06);
+
+            border: 1px solid rgba(100,230,150,.1);
+
+            text-align: center;
+        }
+
+        .result span {
+
+            color: #7e8c84;
+
+            font-size: 12px;
+        }
+
+        .result strong {
+
+            display: block;
+
+            font-size: 42px;
+
+            color: #6de69b;
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           INDUSTRIAL
+           ========================= */
+
+        .industrial {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(22,42,29,.8),
+                    rgba(5,8,7,1)
+                );
+        }
+
+        .industrial-content {
+
+            display: grid;
+
+            grid-template-columns: 1.1fr .9fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .industrial-list {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .industrial-item {
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: flex-start;
+
+            color: #9aa79f;
+
+            font-size: 14px;
+        }
+
+        .check {
+
+            color: #65e497;
+
+            font-weight: 900;
+        }
+
+        .industrial-box {
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(100,230,150,.13);
+
+            background: rgba(0,0,0,.25);
+        }
+
+        .industrial-box h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .scale-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid rgba(255,255,255,.06);
+
+            font-size: 13px;
+        }
+
+        .scale-row span:last-child {
+
+            color: #69e49a;
+        }
+
+        @media(max-width:800px) {
+
+            .industrial-content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           PROTOTYPE
+           ========================= */
+
+        .prototype-box {
+
+            margin-top: 50px;
+
+            min-height: 330px;
+
+            border-radius: 22px;
+
+            border: 1px dashed rgba(100,230,150,.2);
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(80,220,130,.06),
+                    transparent 55%
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px;
+        }
+
+        .prototype-box h3 {
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .prototype-box p {
+
+            color: #78867f;
+
+            max-width: 500px;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+
+            border-top: 1px solid rgba(255,255,255,.06);
+
+            padding: 45px 0;
+
+            color: #68766f;
+
+            font-size: 12px;
+        }
+
+        .footer-inner {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .footer-logo {
+
+            color: #dbe9e0;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+        @media(max-width:600px) {
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+        }
+
+
+        /* =========================
+           REVEAL ANIMATION
+           ========================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+    </style>
 </head>
 
+
 <body>
-    <h1>AERONX</h1>
-    <p>Intelligent Biological Carbon Management</p>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="container nav-inner">
+
+        <a href="#" class="logo">
+
+            <div class="logo-mark">
+                🌱
+            </div>
+
+            AERONX
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="#technology">Technology</a>
+
+            <a href="#science">Science</a>
+
+            <a href="#monitoring">Monitoring</a>
+
+            <a href="#innovation">Innovation</a>
+
+        </div>
+
+
+        <a href="#prototype" class="nav-button">
+            Our Prototype
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="container hero-grid">
+
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+
+                <span class="pulse"></span>
+
+                INTELLIGENT BIOLOGICAL CARBON MANAGEMENT
+
+            </div>
+
+
+            <h1>
+
+                Engineering a
+                <span>cleaner future.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                AeronX is a modular biological carbon-management
+                system designed to combine exhaust pre-treatment,
+                gas conditioning, microalgae-based CO₂ capture,
+                and intelligent environmental monitoring.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#technology"
+                   class="btn btn-primary">
+
+                    Explore AeronX →
+
+                </a>
+
+                <a href="#innovation"
+                   class="btn btn-secondary">
+
+                    Why it's different
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="system-card reveal">
+
+            <div class="gas-dot"></div>
+
+
+            <div class="system-title">
+
+                <span>AeronX system architecture</span>
+
+                <span class="live">
+                    ● ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="pipeline">
+
+
+                <div class="stage">
+
+                    <div class="stage-number">01</div>
+
+                    <div>
+
+                        <h4>Pre-treatment</h4>
+
+                        <p>
+                            Particulate & pollutant conditioning
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">↓</div>
+
+
+                <div class="stage">
+
+                    <div class="stage-number">02</div>
+
+                    <div>
+
+                        <h4>Cooling & conditioning</h4>
+
+                        <p>
+                            Creates suitable biological conditions
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">↓</div>
+
+
+                <div class="stage">
+
+                    <div class="stage-number">03</div>
+
+                    <div>
+
+                        <h4>CO₂ monitoring</h4>
+
+                        <p>
+                            SCD40 gas measurement
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">↓</div>
+
+
+                <div class="stage">
+
+                    <div class="stage-number">04</div>
+
+                    <div>
+
+                        <h4>Algae photobioreactor</h4>
+
+                        <p>
+                            Biological CO₂ uptake
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">↓</div>
+
+
+                <div class="stage">
+
+                    <div class="stage-number">05</div>
+
+                    <div>
+
+                        <h4>Mist separation</h4>
+
+                        <p>
+                            Protects downstream components
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+
+            <strong>01</strong>
+
+            <span>Integrated system</span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>04+</strong>
+
+            <span>Environmental parameters</span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>ESP32</strong>
+
+            <span>Smart controller</span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>CO₂</strong>
+
+            <span>Primary biological target</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     INNOVATION
+========================= -->
+
+<section id="innovation">
+
+    <div class="container">
+
+        <div class="section-label">
+            THE IDEA
+        </div>
+
+        <h2 class="section-title">
+            The algae isn't the<br>
+            <span class="green">whole innovation.</span>
+        </h2>
+
+        <p class="section-description">
+
+            Microalgae-based photobioreactors already exist.
+            AeronX focuses on integrating biological carbon
+            capture into a complete, monitored gas-treatment
+            pathway.
+
+        </p>
+
+
+        <div class="innovation-grid">
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    🧱
+                </div>
+
+                <h3>
+                    Pre-treatment
+                </h3>
+
+                <p>
+                    Incoming gas is conditioned before entering
+                    the biological stage, reducing particulate
+                    exposure and preparing the gas stream.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Biological capture
+                </h3>
+
+                <p>
+                    Microalgae use inorganic carbon during
+                    photosynthesis and incorporate carbon into
+                    biological biomass.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Intelligent monitoring
+                </h3>
+
+                <p>
+                    Sensors connected to an ESP32 allow the
+                    system to observe CO₂, temperature, pH and
+                    light conditions.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     TECHNOLOGY
+========================= -->
+
+<section id="technology">
+
+    <div class="container">
+
+        <div class="section-label">
+            TECHNOLOGY
+        </div>
+
+        <h2 class="section-title">
+            From gas stream<br>
+            <span class="green">to biological capture.</span>
+        </h2>
+
+        <p class="section-description">
+
+            AeronX divides the treatment process into
+            functional stages so each part has a specific role.
+
+        </p>
+
+
+        <div class="process">
+
+
+            <div class="process-step reveal">
+
+                <div class="icon">🧹</div>
+
+                <h3>
+                    Pre-filter
+                </h3>
+
+                <p>
+                    Reduces particulate matter before the
+                    biological stage.
+                </p>
+
+            </div>
+
+
+            <div class="process-step reveal">
+
+                <div class="icon">❄️</div>
+
+                <h3>
+                    Conditioning
+                </h3>
+
+                <p>
+                    Brings the gas toward conditions suitable
+                    for the biological reactor.
+                </p>
+
+            </div>
+
+
+            <div class="process-step reveal">
+
+                <div class="icon">📡</div>
+
+                <h3>
+                    Sensing
+                </h3>
+
+                <p>
+                    Measures CO₂ concentration before biological
+                    treatment.
+                </p>
+
+            </div>
+
+
+            <div class="process-step reveal">
+
+                <div class="icon">🌿</div>
+
+                <h3>
+                    Algae reactor
+                </h3>
+
+                <p>
+                    Microalgae use light energy to fix inorganic
+                    carbon through photosynthesis.
+                </p>
+
+            </div>
+
+
+            <div class="process-step reveal">
+
+                <div class="icon">💧</div>
+
+                <h3>
+                    Mist separator
+                </h3>
+
+                <p>
+                    Helps prevent liquid droplets from reaching
+                    downstream electronics.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MONITORING
+========================= -->
+
+<section id="monitoring"
+         class="dashboard-section">
+
+    <div class="container">
+
+        <div class="section-label">
+            SMART MONITORING
+        </div>
+
+        <h2 class="section-title">
+            The reactor<br>
+            <span class="green">has a nervous system.</span>
+        </h2>
+
+        <p class="section-description">
+
+            AeronX uses an ESP32-based monitoring layer to
+            collect environmental data and provide a digital
+            view of the biological system.
+
+        </p>
+
+
+        <div class="dashboard reveal">
+
+
+            <div class="dash-top">
+
+                <div class="dash-brand">
+                    AERONX / LIVE MONITOR
+                </div>
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    SYSTEM ONLINE
+
+                </div>
+
+            </div>
+
+
+            <div class="sensor-grid">
+
+
+                <div class="sensor">
+
+                    <div class="sensor-name">
+                        CO₂
+                    </div>
+
+                    <div class="sensor-value"
+                         id="co2Value">
+
+                        612
+
+                    </div>
+
+                    <div class="sensor-unit">
+                        ppm
+                    </div>
+
+                </div>
+
+
+                <div class="sensor">
+
+                    <div class="sensor-name">
+                        Water temperature
+                    </div>
+
+                    <div class="sensor-value">
+                        24.6
+                    </div>
+
+                    <div class="sensor-unit">
+                        °C
+                    </div>
+
+                </div>
+
+
+                <div class="sensor">
+
+                    <div class="sensor-name">
+                        pH
+                    </div>
+
+                    <div class="sensor-value">
+                        7.18
+                    </div>
+
+                    <div class="sensor-unit">
+                        pH units
+                    </div>
+
+                </div>
+
+
+                <div class="sensor">
+
+                    <div class="sensor-name">
+                        Light
+                    </div>
+
+                    <div class="sensor-value">
+                        1280
+                    </div>
+
+                    <div class="sensor-unit">
+                        lux
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="chart">
+
+                <div class="chart-line">
+
+                    <svg viewBox="0 0 1000 150"
+                         preserveAspectRatio="none">
+
+                        <polyline
+                            points="0,30 100,38 200,48 300,42 400,65 500,70 600,83 700,80 800,105 900,111 1000,120"
+                            fill="none"
+                            stroke="#63e294"
+                            stroke-width="4"
+                            vector-effect="non-scaling-stroke"
+                        />
+
+                    </svg>
+
+                </div>
+
+                <div class="chart-label">
+                    CO₂ concentration trend
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SCIENCE
+========================= -->
+
+<section id="science">
+
+    <div class="container">
+
+        <div class="section-label">
+            THE SCIENCE
+        </div>
+
+        <h2 class="section-title">
+            Biology meets<br>
+            <span class="green">engineering.</span>
+        </h2>
+
+        <p class="section-description">
+
+            AeronX combines biological carbon fixation with
+            gas-flow engineering and environmental monitoring.
+
+        </p>
+
+
+        <div class="science-grid">
+
+
+            <div class="science-card reveal">
+
+                <h3>
+                    🌿 Photosynthetic carbon fixation
+                </h3>
+
+                <p>
+
+                    Microalgae use light energy to convert
+                    inorganic carbon into organic compounds
+                    through photosynthesis. Carbon is therefore
+                    incorporated into algal biomass.
+
+                </p>
+
+                <div class="equation">
+
+                    6CO₂ + 6H₂O + light
+                    → C₆H₁₂O₆ + 6O₂
+
+                </div>
+
+            </div>
+
+
+            <div class="science-card reveal">
+
+                <h3>
+                    🌊 Gas–liquid mass transfer
+                </h3>
+
+                <p>
+
+                    CO₂ must first move from the gas phase
+                    into the liquid culture. Bubbling increases
+                    the gas–liquid contact area and can improve
+                    mass transfer.
+
+                </p>
+
+            </div>
+
+
+            <div class="science-card reveal">
+
+                <h3>
+                    💡 Light availability
+                </h3>
+
+                <p>
+
+                    Photosynthesis depends on available light.
+                    As algal biomass increases, light attenuation
+                    and self-shading can become important
+                    limitations inside the reactor.
+
+                </p>
+
+            </div>
+
+
+            <div class="science-card reveal">
+
+                <h3>
+                    🧪 pH & carbon chemistry
+                </h3>
+
+                <p>
+
+                    Dissolved CO₂ participates in the carbonate
+                    system of water. Changes in CO₂ concentration
+                    can therefore influence pH and the distribution
+                    of dissolved inorganic carbon.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CO2 CALCULATOR
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-label">
+            EXPERIMENTAL TOOL
+        </div>
+
+        <h2 class="section-title">
+            Measure the<br>
+            <span class="green">difference.</span>
+        </h2>
+
+        <p class="section-description">
+
+            Enter measured inlet and outlet CO₂ concentrations
+            to calculate the apparent percentage reduction.
+
+        </p>
+
+
+        <div class="calculator">
+
+
+            <div class="input-group">
+
+                <label>
+                    CO₂ IN — ppm
+                </label>
+
+                <input
+                    type="number"
+                    id="co2In"
+                    value="800"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    CO₂ OUT — ppm
+                </label>
+
+                <input
+                    type="number"
+                    id="co2Out"
+                    value="600"
+                >
+
+            </div>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="calculateCO2()">
+
+                Calculate reduction
+
+            </button>
+
+
+            <div class="result">
+
+                <span>
+                    Apparent CO₂ reduction
+                </span>
+
+                <strong id="result">
+                    25.0%
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     INDUSTRIAL
+========================= -->
+
+<section class="industrial">
+
+    <div class="container industrial-content">
+
+
+        <div class="reveal">
+
+            <div class="section-label">
+                BEYOND THE PROTOTYPE
+            </div>
+
+            <h2 class="section-title">
+
+                Designed to<br>
+
+                <span class="green">
+                    scale.
+                </span>
+
+            </h2>
+
+            <p class="section-description">
+
+                The current AeronX prototype demonstrates the
+                underlying concept. A future industrial system
+                would require significant engineering for real
+                exhaust flow, temperature, pressure drop,
+                filtration, reactor capacity and biological
+                productivity.
+
+            </p>
+
+
+            <div class="industrial-list">
+
+
+                <div class="industrial-item">
+
+                    <span class="check">✓</span>
+
+                    Modular reactor architecture
+
+                </div>
+
+
+                <div class="industrial-item">
+
+                    <span class="check">✓</span>
+
+                    Industrial-grade particulate pre-treatment
+
+                </div>
+
+
+                <div class="industrial-item">
+
+                    <span class="check">✓</span>
+
+                    Automated environmental monitoring
+
+                </div>
+
+
+                <div class="industrial-item">
+
+                    <span class="check">✓</span>
+
+                    Expandable gas-processing capacity
+
+                </div>
+
+
+                <div class="industrial-item">
+
+                    <span class="check">✓</span>
+
+                    Data-driven optimization
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="industrial-box reveal">
+
+            <h3>
+                Prototype → Industrial
+            </h3>
+
+
+            <div class="scale-row">
+
+                <span>
+                    Reactor
+                </span>
+
+                <span>
+                    Larger modular units
+                </span>
+
+            </div>
+
+
+            <div class="scale-row">
+
+                <span>
+                    Filtration
+                </span>
+
+                <span>
+                    Engineered media
+                </span>
+
+            </div>
+
+
+            <div class="scale-row">
+
+                <span>
+                    Sensors
+                </span>
+
+                <span>
+                    Industrial instrumentation
+                </span>
+
+            </div>
+
+
+            <div class="scale-row">
+
+                <span>
+                    Controller
+                </span>
+
+                <span>
+                    Industrial PLC / controller
+                </span>
+
+            </div>
+
+
+            <div class="scale-row">
+
+                <span>
+                    Monitoring
+                </span>
+
+                <span>
+                    Local + cloud systems
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROTOTYPE
+========================= -->
+
+<section id="prototype">
+
+    <div class="container">
+
+        <div class="section-label">
+            OUR PROTOTYPE
+        </div>
+
+        <h2 class="section-title">
+
+            From an idea<br>
+
+            <span class="green">
+                to a working model.
+            </span>
+
+        </h2>
+
+        <p class="section-description">
+
+            AeronX is being developed as a physical prototype
+            to investigate the integration of biological
+            carbon capture, gas conditioning and intelligent
+            monitoring.
+
+        </p>
+
+
+        <div class="prototype-box">
+
+            <div>
+
+                <div style="font-size:55px;margin-bottom:15px;">
+                    🌱⚙️
+                </div>
+
+                <h3>
+                    AeronX Prototype
+                </h3>
+
+                <p>
+
+                    Add your actual prototype photograph here
+                    when you upload the image to the GitHub
+                    repository.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section>
+
+    <div class="container"
+         style="text-align:center;">
+
+        <div class="section-label">
+            A DIFFERENT APPROACH
+        </div>
+
+        <h2 class="section-title">
+
+            Capture carbon.<br>
+
+            <span class="green">
+                Grow a solution.
+            </span>
+
+        </h2>
+
+        <p class="section-description"
+           style="margin:0 auto 30px;">
+
+            AeronX explores how biological systems,
+            engineering and intelligent monitoring can
+            work together to address carbon management.
+
+        </p>
+
+
+        <a href="#technology"
+           class="btn btn-primary">
+
+            Explore the system →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+
+            <div class="footer-logo">
+                AERONX
+            </div>
+
+            <div>
+                Intelligent Biological Carbon Management
+            </div>
+
+        </div>
+
+
+        <div>
+
+            © 2026 AeronX Project
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+    /* =========================
+       CO₂ CALCULATOR
+    ========================= */
+
+    function calculateCO2() {
+
+        const input =
+            parseFloat(
+                document.getElementById("co2In").value
+            );
+
+        const output =
+            parseFloat(
+                document.getElementById("co2Out").value
+            );
+
+
+        const result =
+            document.getElementById("result");
+
+
+        if (
+            isNaN(input) ||
+            isNaN(output) ||
+            input <= 0
+        ) {
+
+            result.textContent = "--";
+
+            return;
+        }
+
+
+        const reduction =
+            ((input - output) / input) * 100;
+
+
+        result.textContent =
+            reduction.toFixed(1) + "%";
+
+    }
+
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if(entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+
+
+    /* =========================
+       DEMO CO₂ ANIMATION
+    ========================= */
+
+    let demoCO2 = 612;
+
+
+    setInterval(() => {
+
+        const change =
+            (Math.random() - 0.5) * 8;
+
+
+        demoCO2 += change;
+
+
+        demoCO2 =
+            Math.max(
+                580,
+                Math.min(640, demoCO2)
+            );
+
+
+        const element =
+            document.getElementById("co2Value");
+
+
+        if(element) {
+
+            element.textContent =
+                Math.round(demoCO2);
+
+        }
+
+    }, 1800);
+
+
+</script>
+
+
 </body>
 </html>
