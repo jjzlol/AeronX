@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AeronX | Intelligent Biological Carbon Management</title>
+    <title>AeronX | Intelligent Modular CO₂ Capture Prototype</title>
 
     <meta
         name="description"
-        content="AeronX is developing an intelligent biological carbon-management system that combines exhaust pre-treatment, gas conditioning and microalgae-based carbon capture."
+        content="AeronX is a modular, sensor-instrumented algal photobioreactor platform for experimental CO₂ treatment, real-time monitoring and future industrial side-stream research."
     >
 
     <style>
@@ -37,8 +37,8 @@
                 Arial,
                 sans-serif;
 
-            background: #050806;
-            color: #edf7f0;
+            background: #0E1205;
+            color: #ECE6D2;
             line-height: 1.6;
 
             overflow-x: hidden;
@@ -64,16 +64,16 @@
         ===================================================== */
 
         :root {
-            --bg: #050806;
-            --bg2: #09100c;
+            --bg: #0E1205;
+            --bg2: #171C0A;
 
-            --green: #66e69a;
-            --green-dark: #2f9e63;
-            --green-soft: rgba(102, 230, 154, 0.10);
+            --green: #B4B78C;
+            --green-dark: #646D3A;
+            --green-soft: rgba(180,183,140,0.10);
 
-            --text: #edf7f0;
-            --muted: #8b9991;
-            --muted2: #64736a;
+            --text: #ECE6D2;
+            --muted: #B4B78C;
+            --muted2: #8B935D;
 
             --border: rgba(255,255,255,0.075);
         }
@@ -151,7 +151,7 @@
             z-index: 1000;
 
             background:
-                rgba(5,8,6,0.72);
+                rgba(14,18,5,0.78);
 
             backdrop-filter: blur(18px);
 
@@ -183,26 +183,39 @@
             letter-spacing: -0.5px;
         }
 
-        .logo-icon {
-            width: 35px;
-            height: 35px;
-
-            display: grid;
-            place-items: center;
-
+        .logo-img {
+            width: 64px;
+            height: 44px;
+            object-fit: cover;
+            object-position: center 29%;
             border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #79eea5,
-                    #278653
-                );
-
-            color: #061009;
-
+            border: 1px solid rgba(220,214,187,0.16);
             box-shadow:
-                0 0 30px rgba(102,230,154,0.18);
+                0 10px 26px rgba(0,0,0,0.28),
+                0 0 24px rgba(139,147,93,0.10);
+            transition: transform .25s ease, border-color .25s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: translateY(-1px);
+            border-color: rgba(220,214,187,0.32);
+        }
+
+        .logo-wordmark {
+            color: #ECE6D2;
+            letter-spacing: 1.8px;
+            font-size: 17px;
+            font-weight: 850;
+        }
+
+        @media(max-width: 500px) {
+            .logo-img {
+                width: 52px;
+                height: 38px;
+            }
+            .logo-wordmark {
+                font-size: 15px;
+            }
         }
 
         .nav-links {
@@ -212,7 +225,7 @@
 
             gap: 30px;
 
-            color: #9aa89f;
+            color: #B4B78C;
 
             font-size: 13px;
         }
@@ -381,8 +394,8 @@
             background:
                 linear-gradient(
                     100deg,
-                    #f3fff7,
-                    #64e69a
+                    #ECE6D2,
+                    #B4B78C
                 );
 
             -webkit-background-clip: text;
@@ -394,7 +407,7 @@
 
             max-width: 630px;
 
-            color: #94a39a;
+            color: #B4B78C;
 
             font-size: 18px;
 
@@ -435,7 +448,7 @@
 
             background: var(--green);
 
-            color: #061009;
+            color: #0E1205;
 
             box-shadow:
                 0 15px 40px
@@ -460,7 +473,7 @@
             background:
                 rgba(255,255,255,0.025);
 
-            color: #dbe7df;
+            color: #ECE6D2;
         }
 
         .button-secondary:hover {
@@ -591,6 +604,23 @@
             margin-bottom: 12px;
         }
 
+        .brand-orb-icon {
+            width: 118px;
+            height: 118px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(220,214,187,0.16);
+            box-shadow: 0 18px 50px rgba(0,0,0,.32);
+            background: #0E1205;
+        }
+
+        .brand-orb-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 27%;
+        }
+
         .orb-center strong {
 
             font-size: 20px;
@@ -718,7 +748,7 @@
 
         .trust-item {
 
-            color: #65736b;
+            color: #8B935D;
 
             font-size: 10px;
 
@@ -753,7 +783,7 @@
 
             letter-spacing: -1px;
 
-            color: #dce9e1;
+            color: #ECE6D2;
         }
 
         .about-text {
@@ -833,7 +863,7 @@
 
         .problem-number {
 
-            color: #426d52;
+            color: #646D3A;
 
             font-size: 12px;
 
@@ -936,7 +966,7 @@
                 translateY(-50%);
 
             color:
-                #4f936a;
+                #8B935D;
 
             z-index: 5;
 
@@ -1188,7 +1218,7 @@
 
             letter-spacing: -1px;
 
-            color: #dceae1;
+            color: #ECE6D2;
         }
 
         .quote-card span {
@@ -1345,7 +1375,7 @@
 
         .prototype-placeholder {
 
-            color: #66756c;
+            color: #8B935D;
         }
 
         .prototype-placeholder .big {
@@ -1359,7 +1389,7 @@
 
             display: block;
 
-            color: #cbd9d0;
+            color: #DCD6BB;
 
             font-size: 20px;
 
@@ -1413,7 +1443,7 @@
             background:
                 rgba(255,255,255,0.018);
 
-            color: #9ca9a1;
+            color: #B4B78C;
 
             font-size: 12px;
         }
@@ -1480,7 +1510,7 @@
 
             align-items: flex-start;
 
-            color: #9aa89f;
+            color: #B4B78C;
 
             font-size: 14px;
         }
@@ -1528,7 +1558,7 @@
 
             font-size: 12px;
 
-            color: #7e8c84;
+            color: #8B935D;
         }
 
         .scale-row:last-child {
@@ -1674,7 +1704,7 @@
 
             padding: 45px 0;
 
-            color: #647168;
+            color: #8B935D;
 
             font-size: 11px;
         }
@@ -1692,11 +1722,27 @@
 
         .footer-brand {
 
-            color: #dce9e1;
+            color: #ECE6D2;
 
             font-size: 18px;
 
             font-weight: 850;
+        }
+
+        .footer-brand-lockup {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .footer-logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            object-position: center 29%;
+            border-radius: 10px;
+            border: 1px solid rgba(220,214,187,0.14);
         }
 
         .footer-links {
@@ -1748,6 +1794,155 @@
         }
 
 
+    
+
+        /* =====================================================
+           2026 INDUSTRIAL REFRESH
+        ===================================================== */
+        body {
+            background:
+                linear-gradient(rgba(180,183,140,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180,183,140,.025) 1px, transparent 1px),
+                var(--bg);
+            background-size: 52px 52px;
+        }
+
+        .navbar {
+            background: rgba(14,18,5,.78);
+            border-bottom: 1px solid rgba(220,214,187,.08);
+        }
+
+        .section-title {
+            color: #ECE6D2;
+            text-wrap: balance;
+        }
+
+        .button-primary {
+            background: #DCD6BB;
+            color: #0E1205;
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 18px 45px rgba(220,214,187,.14);
+        }
+
+        .industrial-hero-card {
+            width: min(470px, 100%);
+            padding: 24px;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at top right, rgba(180,183,140,.10), transparent 42%),
+                linear-gradient(145deg, rgba(57,65,32,.42), rgba(14,18,5,.92));
+            border: 1px solid rgba(220,214,187,.12);
+            box-shadow: 0 35px 90px rgba(0,0,0,.38);
+        }
+
+        .industrial-hero-top {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:12px;
+            color:#B4B78C;
+            font-size:10px;
+            font-weight:800;
+            letter-spacing:1.5px;
+            margin-bottom:18px;
+        }
+
+        .status-pill {
+            border:1px solid rgba(180,183,140,.22);
+            background:rgba(180,183,140,.07);
+            color:#DCD6BB;
+            padding:6px 9px;
+            border-radius:999px;
+            font-size:9px;
+        }
+
+        .mini-flow { display:grid; gap:7px; }
+        .mini-node {
+            display:flex;
+            align-items:center;
+            gap:14px;
+            padding:13px 15px;
+            border-radius:13px;
+            background:rgba(14,18,5,.72);
+            border:1px solid rgba(220,214,187,.08);
+            color:#DCD6BB;
+            font-size:12px;
+        }
+        .mini-node b {
+            color:#8B935D;
+            font-size:10px;
+            letter-spacing:1px;
+        }
+        .mini-node.active {
+            border-color:rgba(180,183,140,.34);
+            background:rgba(100,109,58,.16);
+            box-shadow: inset 0 0 30px rgba(180,183,140,.04);
+        }
+        .mini-arrow { text-align:center; color:#646D3A; line-height:1; }
+
+        .sensor-ribbon {
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:7px;
+            margin-top:18px;
+        }
+        .sensor-ribbon span {
+            padding:8px;
+            border-radius:9px;
+            text-align:center;
+            border:1px solid rgba(220,214,187,.07);
+            color:#8B935D;
+            font-size:9px;
+            letter-spacing:.6px;
+            background:rgba(0,0,0,.16);
+        }
+
+        .problem-card,
+        .technology-card,
+        .science-card,
+        .difference-item,
+        .team-card,
+        .scale-card,
+        .architecture,
+        .prototype-frame {
+            box-shadow: 0 18px 55px rgba(0,0,0,.14);
+        }
+
+        .problem-card:hover,
+        .technology-card:hover,
+        .science-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(180,183,140,.24);
+            transition: .28s ease;
+        }
+
+        .prototype-frame img {
+            transition: transform .45s ease;
+        }
+        .prototype-frame:hover img { transform: scale(1.018); }
+
+        .sdg-section {
+            background: linear-gradient(180deg, #0E1205, #171C0A 55%, #0E1205);
+        }
+        .sdg-number {
+            width:46px;
+            height:46px;
+            display:grid;
+            place-items:center;
+            border-radius:12px;
+            background:rgba(180,183,140,.10);
+            border:1px solid rgba(180,183,140,.16);
+            color:#DCD6BB;
+            font-weight:900;
+            margin-bottom:20px;
+        }
+
+        @media(max-width:900px) {
+            .industrial-hero-card { margin:auto; }
+        }
+
     </style>
 </head>
 
@@ -1763,13 +1958,15 @@
 
     <div class="container nav-inner">
 
-        <a href="#" class="logo">
+        <a href="#" class="logo" aria-label="AeronX home">
 
-            <div class="logo-icon">
-                🌱
-            </div>
+            <img
+                src="images/aeronx-logo.png"
+                alt="AeronX custom logo"
+                class="logo-img"
+            >
 
-            AERONX
+            <span class="logo-wordmark">AERONX</span>
 
         </a>
 
@@ -1790,6 +1987,10 @@
 
             <a href="#prototype">
                 Prototype
+            </a>
+
+            <a href="#sdg">
+                SDGs
             </a>
 
             <a href="#vision">
@@ -1827,26 +2028,25 @@
 
                 <span class="badge-dot"></span>
 
-                BIOLOGICAL CARBON MANAGEMENT
+                SCIENCE EXHIBITION 2026 · THEME 4 — AI, IoT & ROBOTICS
 
             </div>
 
 
             <h1>
 
-                Turning
-                <span>emissions into opportunity.</span>
+                Engineering
+                <span>biological CO₂ treatment for industry.</span>
 
             </h1>
 
 
             <p class="hero-text">
 
-                AeronX is developing an intelligent,
-                modular biological system that explores
-                a new approach to industrial carbon management
-                using exhaust pre-treatment, gas conditioning
-                and microalgae-based carbon capture.
+                AeronX is a low-cost, modular experimental platform that combines
+                gas pretreatment, conditioning, a microalgae photobioreactor,
+                real-time sensing and ESP32-based monitoring to study CO₂ reduction
+                under controlled conditions — with a future path toward industrial side-stream testing.
 
             </p>
 
@@ -1871,52 +2071,35 @@
             </div>
 
         </div>
-
-
-
         <div class="hero-visual reveal">
-
-            <div class="orb">
-
-                <div class="orb-center">
-
-                    <div class="orb-icon">
-                        🌱
-                    </div>
-
-                    <strong>
-                        AERONX
-                    </strong>
-
-                    <small>
-                        BIOLOGICAL ENGINEERING
-                    </small>
-
+            <div class="industrial-hero-card">
+                <div class="industrial-hero-top">
+                    <span>FUTURE INDUSTRIAL SIDE-STREAM</span>
+                    <span class="status-pill">CONCEPT</span>
                 </div>
 
+                <div class="mini-flow">
+                    <div class="mini-node"><b>01</b><span>Factory side-stream</span></div>
+                    <div class="mini-arrow">↓</div>
+                    <div class="mini-node"><b>02</b><span>Particle pretreatment</span></div>
+                    <div class="mini-arrow">↓</div>
+                    <div class="mini-node"><b>03</b><span>Gas conditioning</span></div>
+                    <div class="mini-arrow">↓</div>
+                    <div class="mini-node active"><b>04</b><span>Algal photobioreactor</span></div>
+                    <div class="mini-arrow">↓</div>
+                    <div class="mini-node"><b>05</b><span>Monitoring + outlet</span></div>
+                </div>
+
+                <div class="sensor-ribbon">
+                    <span>SCD40 · CO₂</span>
+                    <span>BH1750 · LIGHT</span>
+                    <span>DS18B20 · TEMP</span>
+                    <span>pH · CULTURE</span>
+                </div>
             </div>
-
-
-            <div class="floating-label label-one">
-                Exhaust pre-treatment
-            </div>
-
-            <div class="floating-label label-two">
-                Gas conditioning
-            </div>
-
-            <div class="floating-label label-three">
-                Microalgae
-            </div>
-
-            <div class="floating-label label-four">
-                Intelligent monitoring
-            </div>
-
         </div>
 
     </div>
-
 </header>
 
 
@@ -1942,7 +2125,7 @@
         </div>
 
         <div class="trust-item">
-            Industrial-focused concept
+            Industrial side-stream concept
         </div>
 
     </div>
@@ -1969,7 +2152,7 @@
 
             Engineering a bridge between
             <span class="green">
-                biology and mobility.
+                biology and industrial engineering.
             </span>
 
         </h2>
@@ -1993,10 +2176,10 @@
 
                 <p>
 
-                    Modern industries rely on sophisticated
-                    emission-control technologies, but carbon
-                    management remains a major engineering
-                    challenge.
+                    Industrial exhaust streams can contain CO₂ together with
+                    heat, moisture, particles and other contaminants. Biological
+                    treatment therefore requires controlled gas handling before
+                    the gas reaches a living culture.
 
                 </p>
 
@@ -2013,11 +2196,10 @@
 
                 <p>
 
-                    Our goal is not to replace existing
-                    emission-control systems, but to investigate
-                    how biological carbon capture could be
-                    integrated into a broader industrial-emission
-                    management architecture.
+                    Our current system is an experimental prototype, not a
+                    replacement for industrial scrubbers. The long-term concept
+                    is to investigate how a conditioned side-stream of industrial
+                    exhaust could be studied using modular photobioreactor units.
 
                 </p>
 
@@ -2057,10 +2239,9 @@
 
         <p class="section-description">
 
-            Capturing carbon from a industrial exhaust stream is
-            not simply a matter of putting algae in front of
-            exhaust gas. Temperature, particulates, gas
-            composition, mass transfer and biological conditions
+            Treating industrial flue gas biologically is not simply a matter
+            of routing exhaust into algae. Temperature, particulates, moisture,
+            gas composition, pressure, mass transfer and biological conditions
             all have to be considered.
 
         </p>
@@ -2081,7 +2262,7 @@
 
                 <p>
 
-                    Industrial exhaust contains more than CO₂.
+                    Industrial flue gas contains more than CO₂.
                     A biological system therefore needs
                     appropriate pre-treatment and conditioning.
 
@@ -2311,14 +2492,14 @@
                     <div>
 
                         <h3>
-                            Separation
+                            Outlet monitoring
                         </h3>
 
                         <p>
 
-                            A downstream separation stage can
-                            help prevent liquid droplets from
-                            leaving the reactor.
+                            The conditioned outlet can be monitored for CO₂
+                            while a simple cotton outlet stage helps protect
+                            downstream tubing in the current prototype.
 
                         </p>
 
@@ -2423,14 +2604,14 @@
                 </div>
 
                 <h3>
-                    Intelligent architecture
+                    IoT monitoring & data logging
                 </h3>
 
                 <p>
 
-                    A separate sensing and control layer allows
-                    the biological system to be monitored and
-                    optimized as the project develops.
+                    ESP32-based sensing provides local Wi-Fi monitoring of CO₂,
+                    light, water temperature and pH. Experimental readings can be
+                    logged for later analysis without requiring a cloud server.
 
                 </p>
 
@@ -2483,14 +2664,14 @@
                     <div>
 
                         <h3>
-                            Designed around industry emissions
+                            Designed for industrial side-stream research
                         </h3>
 
                         <p>
 
-                            AeronX is conceived specifically
-                            around the challenges of processing
-                            a industry-related gas stream.
+                            AeronX is designed to study how a controlled,
+                            conditioned industrial side-stream could interact
+                            with a modular biological treatment stage.
 
                         </p>
 
@@ -2591,9 +2772,9 @@
                     bioreactor.
 
                     We are exploring how
-                    biological carbon capture
+                    biological CO₂ treatment
                     can be engineered into a
-                    industry-focused system.”
+                    monitored industrial side-stream platform.”
 
                 </p>
 
@@ -2754,8 +2935,6 @@
 
             <div class="prototype-frame reveal">
 
-                <div class="prototype-frame reveal">
-
     <img
         src="images/image%20(1).png"
         alt="AeronX prototype"
@@ -2769,10 +2948,6 @@
 
 </div>
 
-            </div>
-
-
-
             <div class="prototype-info reveal">
 
                 <h3>
@@ -2783,10 +2958,9 @@
 
                 <p>
 
-                    Our current prototype is focused on
-                    demonstrating the integration of gas
-                    processing, biological carbon capture and
-                    environmental monitoring.
+                    Our current prototype focuses on controlled CO₂-rich gas,
+                    modular gas handling, a vertical PMMA algae reactor and
+                    real-time environmental monitoring.
 
                 </p>
 
@@ -2804,12 +2978,12 @@
 
                     <div class="component">
                         <span>01</span>
-                        Gas inlet & pre-treatment
+                        12V air pump + cotton pre-filter
                     </div>
 
                     <div class="component">
                         <span>02</span>
-                        Cooling / conditioning
+                        Gas conditioning section
                     </div>
 
                     <div class="component">
@@ -2824,7 +2998,7 @@
 
                     <div class="component">
                         <span>05</span>
-                        Environmental monitoring
+                        ESP32 dashboard + data logging
                     </div>
 
                 </div>
@@ -2871,11 +3045,10 @@
                 <p class="section-description"
                    style="margin-top:0;">
 
-                    Scaling AeronX from a prototype to an
-                    industrial system would require substantial
-                    engineering and validation. The architecture
-                    is intentionally modular so those challenges
-                    can be addressed stage by stage.
+                    The current AeronX prototype does not process an entire
+                    factory exhaust stream. A future industrial version would
+                    instead study a controlled side-stream after appropriate
+                    pretreatment, cooling, flow control and safety engineering.
 
                 </p>
 
@@ -2887,7 +3060,7 @@
 
                         <b>→</b>
 
-                        Larger modular photobioreactor systems
+                        Controlled factory exhaust side-stream
 
                     </div>
 
@@ -2896,8 +3069,7 @@
 
                         <b>→</b>
 
-                        Industrial-grade filtration and
-                        conditioning
+                        Industrial-grade particle removal and conditioning
 
                     </div>
 
@@ -2906,7 +3078,7 @@
 
                         <b>→</b>
 
-                        Automated process control
+                        Parallel photobioreactor modules
 
                     </div>
 
@@ -2915,7 +3087,7 @@
 
                         <b>→</b>
 
-                        Continuous gas monitoring
+                        Simultaneous inlet / outlet CO₂ analysis
 
                     </div>
 
@@ -2924,7 +3096,7 @@
 
                         <b>→</b>
 
-                        Optimized gas flow and mass transfer
+                        Leak detection, ventilation and process safety
 
                     </div>
 
@@ -2938,7 +3110,7 @@
             <div class="scale-card reveal">
 
                 <h3>
-                    Prototype → Industrial
+                    Prototype → Industrial side-stream
                 </h3>
 
 
@@ -3001,7 +3173,7 @@
                     </span>
 
                     <span>
-                        Data-driven optimization
+                        Logged data + automated control
                     </span>
 
                 </div>
@@ -3016,6 +3188,40 @@
 </section>
 
 
+
+
+<!-- =====================================================
+     SDGs
+===================================================== -->
+<section id="sdg" class="section sdg-section">
+    <div class="container">
+        <div class="section-label">SUSTAINABLE DEVELOPMENT GOALS</div>
+        <h2 class="section-title">
+            Built around <span class="green">measurable climate action.</span>
+        </h2>
+        <p class="section-description">
+            AeronX primarily aligns with SDG 13 while also connecting industrial
+            innovation and cleaner production to SDG 9 and SDG 12.
+        </p>
+        <div class="science-grid">
+            <div class="science-card reveal">
+                <div class="sdg-number">13</div>
+                <h3>Climate Action</h3>
+                <p>Experimental CO₂-treatment research and real-time carbon monitoring.</p>
+            </div>
+            <div class="science-card reveal">
+                <div class="sdg-number">09</div>
+                <h3>Industry, Innovation & Infrastructure</h3>
+                <p>A modular, sensor-instrumented platform designed for future industrial side-stream research.</p>
+            </div>
+            <div class="science-card reveal">
+                <div class="sdg-number">12</div>
+                <h3>Responsible Consumption & Production</h3>
+                <p>Supports cleaner-process thinking through monitoring, biological treatment and data-driven experimentation.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- =====================================================
      VISION
@@ -3033,10 +3239,9 @@
 
         <h2 class="section-title">
 
-            What if emissions
-            could become
+            Measure first.
             <span class="green">
-                biological value?
+                Improve what the data proves.
             </span>
 
         </h2>
@@ -3044,9 +3249,9 @@
 
         <p class="section-description">
 
-            AeronX is exploring a future where biological
-            systems and engineering work together to create
-            new approaches to carbon management.
+            AeronX is built around a simple principle: measure the system,
+            make only evidence-based claims, and use real data to improve the
+            next generation of biological CO₂-treatment experiments.
 
         </p>
 
@@ -3235,12 +3440,13 @@
 
         <div>
 
-            <div class="footer-brand">
-                AERONX
+            <div class="footer-brand footer-brand-lockup">
+                <img src="images/aeronx-logo.png" alt="AeronX logo" class="footer-logo-img">
+                <span>AERONX</span>
             </div>
 
             <div>
-                Intelligent Biological Carbon Management
+                Intelligent Modular CO₂ Capture Prototype
             </div>
 
         </div>
@@ -3258,6 +3464,10 @@
 
             <a href="#prototype">
                 Prototype
+            </a>
+
+            <a href="#sdg">
+                SDGs
             </a>
 
             <a href="#vision">
@@ -3348,12 +3558,12 @@
             ) {
 
                 navbar.style.background =
-                    "rgba(5,8,6,0.92)";
+                    "rgba(14,18,5,0.94)";
 
             } else {
 
                 navbar.style.background =
-                    "rgba(5,8,6,0.72)";
+                    "rgba(14,18,5,0.78)";
 
             }
 
